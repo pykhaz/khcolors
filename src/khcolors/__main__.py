@@ -7,9 +7,14 @@ Main module of khcolors package
 import argparse
 from rich.console import Console
 
-from .colors_util import get_color_name
+try:
+    from .colors_util import get_color_name
 
-from . import PROJTITLE
+    from . import PROJTITLE
+except ImportError:
+    from colors_util import get_color_name
+
+    from __init__ import PROJTITLE
 
 CN = Console()
 cprint = CN.print
