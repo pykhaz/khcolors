@@ -7,8 +7,9 @@ Auxiliary module for khcolors
 
 from matplotlib import colors as mcolors
 from rich.color import ANSI_COLOR_NAMES, Color, ColorParseError, ColorType
+from rich.console import Console
+from rich.text import Text
 
-from softdev.debug import cprintd
 
 LMN_CMPS = [0.2126, 0.7152, 0.0722]  # LUMINOSITY COMPONENTS
 LMN_LT = int(255*0.35)  # luminosity threshold, for fg color
@@ -32,6 +33,9 @@ COLOR_PALETTE = {
             #                            # but black can be #xxxx00 or #xxxxFF
             "base-bright": []}
             }
+
+CN = Console()
+
 
 for pair in zip(COLOR_PALETTE["css"]["base"], COLOR_PALETTE["css"]["bright"]):
     COLOR_PALETTE["css"]["base-bright"].extend(pair)
@@ -61,6 +65,17 @@ def byte_rgb(color):
     r, g, b = [item*255 for item in mcolors.to_rgb(color)]
 
     return f"rgb({r:.0f},{g:.0f},{b:.0f})"
+
+
+def cprintd(message, opening="DBG:", location=""):
+    """ Print debug message """
+
+    dbg_message = Text(f" {opening} ", style="italic bold red on white")
+    dbg_message.append(Text(f" {message}", style="dark_orange on black"))
+    if location:
+        dbg_message.append(Text(f" [{location}]", style="gray58 on black"))
+
+    CN.print(dbg_message)
 
 
 def get_contrast_color(color: Color) -> str:

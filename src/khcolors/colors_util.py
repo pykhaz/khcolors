@@ -14,11 +14,11 @@ from platform import system
 try:
     from .lib import COLOR_PALETTE, _get_rgb, _luminosity, byte_rgb
     from .lib import get_contrast_color as get_contrast
+    # from .lib import cprintd
 except ImportError:
     from lib import COLOR_PALETTE, _get_rgb, _luminosity, byte_rgb
     from lib import get_contrast_color as get_contrast
-
-# from softdev.debug import cprintd
+    # from lib import cprintd
 
 ftitle = __file__.split("/", maxsplit=-1)[-1].split(".", maxsplit=-1)[0]
 

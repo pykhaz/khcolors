@@ -67,8 +67,12 @@ def debug():
     """ Auxiliary/debug function, for development purposes """
 
     from rich.color import Color, ColorParseError  # pylint: disable=C0415
-    from .colors_util import byte_rgb  # pylint: disable=C0415
-    from softdev.debug import cprintd  # pylint: disable=C0415
+    try:
+        from .colors_util import byte_rgb  # pylint: disable=C0415
+        from .lib import cprintd
+    except ImportError:
+        from colors_util import byte_rgb  # pylint: disable=C0415
+        from lib import cprintd
 
     cprintd(f"{SHARED = }", location="khcolors: __main__.debug")
     color_test = "springgreen"
