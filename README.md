@@ -52,6 +52,8 @@ A possibility of using/defining custom colour palettes is to be implemented in t
     pip install khcolors
     ```
 
+    **To be implemented.**
+
 
 ## Usage
 
