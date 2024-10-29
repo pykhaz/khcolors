@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "khcolors"
+dynamic = ["version"]
+description = 'colour name choosing app, for rich and CSS4 palettes'
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = ['color', 'colour', 'rich', 'css4']
+authors = [
+  { name = "Sebastian Kazimierski", email = "pykhaz@o2.pl" },
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = ["matplotlib", "rich", "pyperclip"]
+
+[project.urls]
+Homepage = "https://github.com/heliotech/khcolors"
+Documentation = "https://github.com/heliotech/khcolors#readme"
+Issues = "https://github.com/heliotech/khcolors/issues"
+Source = "https://github.com/heliotech/khcolors"
+
+[tool.hatch.version]
+path = "src/khcolors/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/khcolors tests}"
+
+[tool.coverage.run]
+source_pkgs = ["khcolors", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/khcolors/__about__.py",
+]
+
+[tool.coverage.paths]
+khcolors = ["src/khcolors", "*/khcolors/src/khcolors"]
+tests = ["tests", "*/khcolors/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.hatch.build]
+include = ["src/khcolors/*", "assets/*", "LICENSE.txt", "README.md"]
+exclude = ["tests/*", "README.html"]
+
+[tool.hatch.metadata]
+source-directories = ["src"]
+
+[project.scripts]
+khcolors = "khcolors.__main__:main"
