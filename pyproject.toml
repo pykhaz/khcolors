@@ -55,9 +55,16 @@ exclude_lines = [
   "if TYPE_CHECKING:",
 ]
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/khcolors"]
+
 [tool.hatch.build]
-include = ["src/khcolors/*", "assets/*", "LICENSE.txt", "README.md"]
+source = "src"
+packages = ["khcolors"]
+
+include = ["LICENSE.txt", "README.md"]
 exclude = ["tests/*", "README.html"]
+
 
 [tool.hatch.metadata]
 source-directories = ["src"]
