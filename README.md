@@ -21,7 +21,7 @@
 - [Release History](#release-history)
 - [License](#license)
 - [Contact](#contact)
-- [Acknowledgments](#acknowledgments)
+<!-- - [Acknowledgments](#acknowledgments) -->
 
 ## Introduction
 
@@ -77,12 +77,19 @@ Application options:
 
 - `-r` / `--rgb` -- for copying `(r, g, b)` tuple, instead of the name.
 
-*`khcolors` usage example -- option -c:*
+<!-- ![`khcolors` for colour `salmon`, cases for all the options (linux).](./assets/khcolors_salmon_x4_linux.png "This is the caption of the figure (a simple paragraph)."){ width=600px } -->
 
+<figure>
+    <img src="./assets/khcolors_salmon_x4_linux.png" alt="`khcolors` for `salmon`" style="width:50%; height:auto;">
+  <figcaption>`khcolors` for colour `salmon`, cases for all the options (linux).</figcaption>
+</figure>
 
-*`khcolors` usage example -- option -cr:*
+<br />
 
-![`khcolors` for colour `salmon`, cases for all the options (linux).](./assets/khcolors_salmon_x4_linux.png "This is the caption of the figure (a simple paragraph)."){ width=600px }
+<figure>
+    <img src="./assets/khcolors_salmon_x4_win11.png" alt="`khcolors` for `salmon`" style="width:50%; height:auto;">
+  <figcaption>`khcolors` for colour `salmon`, cases for all the options (windows).</figcaption>
+</figure>
 
 <!-- [see file](./assets/outputfile_edited.html) -->
 
