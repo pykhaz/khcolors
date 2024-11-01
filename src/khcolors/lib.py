@@ -93,10 +93,12 @@ def get_contrast_color(color: Color) -> str:
     # luminosity_inv = 0 if inv < 127 else inv
     if inv < LMN_LT:
         # luminosity_inv = 0
-        result = "black"
+        # result = "black"
+        result = "#000000"
     else:
         # luminosity_inv = 255
-        result = "bright_white"
+        # result = "bright_white"
+        result = "#ffffff"
     # lmn_inv_hex = "#" + f"{int(luminosity_inv):02x}" * 3
     # return lmn_inv_hex
     return result

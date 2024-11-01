@@ -4,6 +4,7 @@
 Main module of the khcolors package/application.
 """
 
+from shutil import get_terminal_size
 from matplotlib.colors import CSS4_COLORS
 from rich.color import ANSI_COLOR_NAMES
 from rich.console import Console
@@ -14,11 +15,11 @@ from platform import system
 try:
     from .lib import COLOR_PALETTE, _get_rgb, _luminosity, byte_rgb
     from .lib import get_contrast_color as get_contrast
-    # from .lib import cprintd
+    from .lib import cprintd
 except ImportError:
     from lib import COLOR_PALETTE, _get_rgb, _luminosity, byte_rgb
     from lib import get_contrast_color as get_contrast
-    # from lib import cprintd
+    from lib import cprintd
 
 ftitle = __file__.split("/", maxsplit=-1)[-1].split(".", maxsplit=-1)[0]
 
@@ -34,10 +35,11 @@ MARKER0 = "\u00a0"
 # MARKER1 = "◉"
 
 LMN_LT = int(255*0.35)  # luminosity threshold, for fg color
-if system().lower() != "windows":  # platform.
-    MARKER1 = "⏺"  # \u23fa
-else:
-    MARKER1 = "o"
+# if system().lower() != "windows":  # platform.
+#     MARKER1 = "⏺"  # \u23fa
+# else:
+#     MARKER1 = "o"
+MARKER1 = "■"
 
 
 def get_color_choices(name: str = "", kind: str = "rich",
@@ -123,7 +125,8 @@ def get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
     cprint(" Choose colour (number):", style="bold")
     marg = len(str(len(found)))
     for i, color in enumerate(found):
-        print_color(i, color, color_base=kind, marg=marg)
+        print_color(i, color, color_base=kind, marg=marg,
+                    total_colors=total_colors)
 
     nr_to_copy = None
     while nr_to_copy is None:
@@ -199,25 +202,46 @@ def get_palette(palette, kind, rgb=False, dbg=False):
     get_color_name("", rgb=rgb, palette=colors)
 
 
-def print_color(i, name, color_base="rich", marg=3):
-    """ Printing a color tile """
+def print_color(i, name, color_base="rich", marg=3, total_colors=10):
+    """ Printing a color tile
+
+        Args:
+            i (int): the index of the color
+            name (str): the name of the color
+            color_base (str): the base color
+            marg (int): the margin
+            total_colors (int): the total number of colors, for adjusting
+                the line width
+
+        Returns:
+            None (prints)
+    """
 
     clr = name if color_base == "rich" else byte_rgb(name)
+    terminal_wd = get_terminal_size().columns
     triplet = _get_rgb(clr)
+    if terminal_wd > 60:  # 61 -- max name + (r, g, b) length
+        name_triplet_txt = f"{name} {str(triplet)}"
+    else:
+        name_triplet_txt = f"{name}"
     fg = get_contrast(clr)
     tile_len = 7
-    color_tile = Text("░", style=f"{fg} on {clr}")  # U+2591 -- ░
-    color_tile.append(MARKER0*marg, style=f"white on {clr}")
-    if system().lower != "windows":  # platform.
-        color_tile.append(MARKER1*tile_len, style=f"bold black on {clr}")
-        color_tile.append(MARKER1*tile_len, style=f"bold white on {clr}")
-    color_tile.append(MARKER0*marg, style=f"white on {clr}")
+    tile_bound = MARKER0*marg
+    tile_body = MARKER1*tile_len
+    style = f"{fg} on {clr}"
+    nr_txt = f" ({i + 1}) "
+    nr_txt_len = len(str(total_colors)) + 4
+    fill_len = (terminal_wd - tile_len*2 - nr_txt_len -
+                len(name_triplet_txt) - 2*marg - 3)
 
-    name_triplet_txt = f"{name} {str(triplet)}"
-    name_txt = Text(f" {name_triplet_txt:<40}", style=f"{fg} on {clr}")
-    name_txt.append("░", style=f"{fg} on {clr}")
-    color_tile.append(f"{name_txt}", style=f"{fg} on {clr}")
-    nr_txt = Text(f" ({i + 1}) ")
-
-    cprint(color_tile, end="")
-    cprint(nr_txt)
+    color_line = Text.assemble(("░", style),
+                               (tile_bound, style),
+                               (tile_body, f"bold #000000 on {clr}"),
+                               (tile_body, f"bold #ffffff on {clr}"),
+                               (tile_bound, style),
+                               (f"{nr_txt:>{nr_txt_len}}",
+                                "#ffffff on #000000"),
+                               (f" {name_triplet_txt}", style),
+                               (f"{' '*fill_len}", style),
+                               ("░", style))
+    cprint(color_line)
