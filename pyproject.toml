@@ -11,7 +11,7 @@ requires-python = ">=3.8"
 license = "MIT"
 keywords = ['color', 'colour', 'rich', 'css4']
 authors = [
-  { name = "Sebastian Kazimierski", email = "pykhaz@o2.pl" },
+  { name = "pykhaz", email = "pykhaz@o2.pl" },
 ]
 classifiers = [
   "Programming Language :: Python :: 3",
