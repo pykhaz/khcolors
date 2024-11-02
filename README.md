@@ -78,14 +78,14 @@ Application options:
 
 <figure>
     <img src="./assets/khcolors_salmon_x4_linux.png" alt="`khcolors` for `salmon`" style="width:50%; height:auto;">
-  <figcaption>`khcolors` for colour `salmon`, cases for all the options (linux).</figcaption>
+  <figcaption>khcolors for colour 'salmon', cases for all the options (linux).</figcaption>
 </figure>
 
 <br />
 
 <figure>
     <img src="./assets/khcolors_salmon_x4_win11.png" alt="`khcolors` for `salmon`" style="width:50%; height:auto;">
-  <figcaption>`khcolors` for colour `salmon`, cases for all the options (windows).</figcaption>
+  <figcaption>khcolors for colour 'salmon', cases for all the options (windows).</figcaption>
 </figure>
 
 <!-- [see file](./assets/outputfile_edited.html) -->
