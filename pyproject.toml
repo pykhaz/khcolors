@@ -21,10 +21,10 @@ classifiers = [
 dependencies = ["matplotlib", "rich", "pyperclip"]
 
 [project.urls]
-Homepage = "https://github.com/heliotech/khcolors"
-Documentation = "https://github.com/heliotech/khcolors#readme"
-Issues = "https://github.com/heliotech/khcolors/issues"
-Source = "https://github.com/heliotech/khcolors"
+Homepage = "https://github.com/pykhaz/khcolors"
+Documentation = "https://github.com/pykhaz/khcolors#readme"
+Issues = "https://github.com/pykhaz/khcolors/issues"
+Source = "https://github.com/pykhaz/khcolors"
 
 [tool.hatch.version]
 path = "src/khcolors/__about__.py"
