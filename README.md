@@ -26,11 +26,11 @@
 ## Introduction
 
 <!-- One to two paragraph statement about your product and what it does. -->
-The application helps choosing a colour name from `rich` or `CSS4` palettes. Presents a list of all the colours containing name given as a parameter.
+The application helps choosing a colour name from `rich` or `CSS4` palettes. `khcolors` when given name, presents a list of all the colours containing the name; user can choose an index of a particular colour.
 
-Sources for the colour names are `matplotlib.colors` and `rich.color.ANSI_COLOR_NAMES` thus the user can easily choose the appropriate colour shade, either working with `matplotlib`, or `rich`.
+Sources for the colour names are `matplotlib.colors` and `rich.color.ANSI_COLOR_NAMES`. Thus the user can easily choose the appropriate colour shade, either working with `matplotlib`, or `rich`.
 
-Searching for the colour name involved basic python data structures, lists and dictionaries, since datasets of all the colour names were considered small.
+Searching for the colour name involves basic python data structures, lists and dictionaries, since datasets of all the colour names were considered small.
 
 Since the application was designed as auxiliary tool, the command line interface was chosen, with minimalistic, though appealing, text formatting. Styling of the text was achieved mostly with the `rich` module; in one case ANSI codes were used.
 
@@ -38,20 +38,19 @@ A possibility of using/defining custom colour palettes is to be implemented in t
 
 - ## Installation
 
-*!TODO: about downloading the package/cloning the repo; cding to the directory`*
+>   * Building locally
 
-- Building locally
+> > Clone \(`git clone https://github.com/pykhaz/khcolors.git`) or download the package \([github.com/pykhaz/khcolors](https://github.com/pykhaz/khcolors) → button/menu "Code" → "Download ZIP"), `cd` into `khcolors` and
 
-    ```bash
-    hatch build
-    pip install .
-    ```
 
-- Installing from PyPI
+> >     hatch build
+> >     pip install .
 
-    ```bash
-    pip install khcolors
-    ```
+>    - Installing from PyPI
+
+
+ > >     pip install khcolors
+
 
 ## Usage
 
@@ -63,10 +62,7 @@ khcolors olive
 
 All the colours containing the name given as the parameter, the base colour, are printed in the terminal, and user is asked to choose one. After confirming the choice, the colour name, or rgb triplet, are copied to clipboard and a confirmation message is displayed.
 
-*`khcolors` usage example -- simple:*
-
-
-If the name of a palette is given as a parameter (currently two palettes are available: `base` and `base-dark`), the colours in the palette are displayed in the terminal and the user is asked to choose one.
+If the name of a palette is given as a parameter (currently two palettes are available: `base` and `base-bright`), the colours in the palette are displayed in the terminal and the user is asked to choose one.
 
 Application options:
 
@@ -75,6 +71,8 @@ Application options:
 - `-r` / `--rgb` -- for copying `(r, g, b)` tuple, instead of the name.
 
 <!-- ![`khcolors` for colour `salmon`, cases for all the options (linux).](./assets/khcolors_salmon_x4_linux.png "This is the caption of the figure (a simple paragraph)."){ width=600px } -->
+
+Screenshots:
 
 <figure>
     <img src="./assets/khcolors_salmon_x4_linux.png" alt="`khcolors` for `salmon`" style="width:50%; height:auto;">
@@ -116,10 +114,12 @@ npm test
 
 ## Known issues
 
-- Minimal terminal width -- as the width of the terminal grows smaller, the colour line gets messy. When the width drops below below 37 columns, a single colour line gets printed in two rows, which looks bad (but this is hardly a case, since the terminal window width is, in most cases, greater than 37 columns).
+- Minimal terminal width -- as the width of the terminal grows smaller, the colour lines get messy. When the width drops below below 37 columns, a single colour line gets printed in two rows, which looks bad (but this is hardly a case, since the terminal window width is, in most cases, greater than 37 columns).
 
 ## Release History
 
+- 0.3.3
+  - updated README.md
 - 0.3.2
   - new command line argument: `-r`/`--rgb` -- for copying `(r, g, b)` tuple,
       instead of the name; `-a`/`-all` removed
@@ -139,13 +139,6 @@ npm test
 - 0.0.1
     - Work in progress
 
-## Contact
-
-<!--
-khaz – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
--->
-khaz –  pykhaz@o2.pl
-
 ## License
 
 The `khcolors` application is distributed under the MIT license. See [LICENSE](LICENSE.txt) for more information.
@@ -162,3 +155,10 @@ The `khcolors` application is distributed under the MIT license. See [LICENSE](L
 [travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
 [wiki]: https://github.com/yourname/yourproject/wiki
 -->
+
+## Contact
+
+<!--
+khaz – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
+-->
+khaz –  pykhaz@o2.pl
