@@ -2,11 +2,11 @@
 # project: khcolors
 
 """
-Auxiliary module for khcolors
+Auxiliary module for khcolors (release package)
 """
 
 from matplotlib import colors as mcolors
-from rich.color import ANSI_COLOR_NAMES, Color, ColorParseError, ColorType
+from rich.color import Color, ColorParseError
 from rich.console import Console
 from rich.text import Text
 

@@ -29,7 +29,9 @@ def main():
 
     desc = ("searching for a colour in the rich  or css library "
             "(ie. in the python `rich.color` or `matplotlib.colors` modules). "
-            "result: list of all the colours with `name` in them. "
+            "result: list of all the colours with `name` in them; "
+            "user can choose the colour number and its name or RGB triplet "
+            "is copied to the clipboard. "
             "(`name` may contain only a part of the colour name.)")
     epilog = (f"example: {PROJTITLE} red;\n"
               f"{PROJTITLE} sea")
@@ -39,7 +41,8 @@ def main():
 
     parser.add_argument("name", type=str, nargs="?", default="",
                         help="name of the colour to look for, "
-                        "or of the palette to choose from")
+                        "or of the palette to choose from "
+                        "(base or base-bright)")
 
     parser.add_argument("-c", "--css", action="store_true",
                         default=False, help="css4 colours")
@@ -69,10 +72,10 @@ def debug():
     from rich.color import Color, ColorParseError  # pylint: disable=C0415
     try:
         from .colors_util import byte_rgb  # pylint: disable=C0415
-        from .lib import cprintd
+        from .lib import cprintd  # pylint: disable=C0415
     except ImportError:
         from colors_util import byte_rgb  # pylint: disable=C0415
-        from lib import cprintd
+        from lib import cprintd  # pylint: disable=C0415
 
     cprintd(f"{SHARED = }", location="khcolors: __main__.debug")
     color_test = "springgreen"

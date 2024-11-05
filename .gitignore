@@ -21,3 +21,5 @@ README.html
 # Ignorowanie plików rozwojowych
 .repo_data
 *_dev.py
+mkserve.sh
+/docs/assets/

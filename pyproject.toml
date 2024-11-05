@@ -33,6 +33,7 @@ path = "src/khcolors/__about__.py"
 extra-dependencies = [
   "mypy>=1.0.0",
 ]
+
 [tool.hatch.envs.types.scripts]
 check = "mypy --install-types --non-interactive {args:src/khcolors tests}"
 

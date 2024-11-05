@@ -1,0 +1,30 @@
+# mkdocs.yml
+
+site_name: khcolors documentation
+
+theme:
+  name: "material"
+
+use_directory_urls: false
+
+plugins:
+  - search
+  - macros  # for variables
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            show_source: true
+            heading_level: 0  # Nie generuj nagłówka dla modułu  # for docstring import
+  # - footnotes  # ERR
+
+nav:
+  - khcolors documentation: index.md
+  - tutorials.md
+  - how-to-guides.md
+  - reference.md
+  - explanation.md
+
+extra:
+  tutorials_getting_started: "Getting started"
