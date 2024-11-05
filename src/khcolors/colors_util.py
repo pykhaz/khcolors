@@ -1,7 +1,28 @@
 # colors_util.py
 
 """
-Main module of the khcolors package/application.
+Main module for choosing colour name from rich or css library.
+
+Functions:
+
+    debug() -> None
+    find_color(colors_base: list, name: str) -> list
+    get_color_choices(name: str = "", kind: str = "rich",
+                      palette: list = None) -> list
+    get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
+                   palette: list = None) -> str
+    get_palette(palette, kind, rgb=False, dbg=False) -> list
+    print_color(i, name, color_base="rich", marg=3, total_colors=10) -> None
+    print_found(color: str, kind: str = "rich", rgb: bool = False) -> None
+
+Constants:
+
+    CN: Console
+    COLOR_BASE: dict
+    MARKER0: str
+    MARKER1: str
+    FTITLE: str
+
 """
 
 from shutil import get_terminal_size
@@ -10,36 +31,44 @@ from rich.color import ANSI_COLOR_NAMES
 from rich.console import Console
 from rich.text import Text
 import pyperclip
-from platform import system
 
 try:
     from .lib import COLOR_PALETTE, _get_rgb, _luminosity, byte_rgb
     from .lib import get_contrast_color as get_contrast
-    from .lib import cprintd
+    # from .lib import cprintd
 except ImportError:
     from lib import COLOR_PALETTE, _get_rgb, _luminosity, byte_rgb
     from lib import get_contrast_color as get_contrast
-    from lib import cprintd
+    # from lib import cprintd
 
-ftitle = __file__.split("/", maxsplit=-1)[-1].split(".", maxsplit=-1)[0]
+FTITLE = __file__.split("/", maxsplit=-1)[-1].split(".", maxsplit=-1)[0]
 
 CN = Console()
 cprint = CN.print
 
 COLOR_BASE = {'css': CSS4_COLORS, 'rich': ANSI_COLOR_NAMES}
 
+LMN_LT = int(255*0.35)  # luminosity threshold, for fg color
+
 # markers for colour samples:
 MARKER0 = "\u00a0"
 # MARKER1 = "x"  # \u2501
 # MARKER1 = "\u25cf"  # ●
 # MARKER1 = "◉"
-
-LMN_LT = int(255*0.35)  # luminosity threshold, for fg color
+MARKER1 = "■"
 # if system().lower() != "windows":  # platform.
 #     MARKER1 = "⏺"  # \u23fa
 # else:
 #     MARKER1 = "o"
-MARKER1 = "■"
+
+
+def debug():
+    """ Function for debugging """
+
+    cprint("_luminosity test", style="orange3 bold")
+    cprint(f"{_luminosity((0, 0, 0)) = :.4f}")
+    cprint(f"{_luminosity((1, 2, 3)) = :.4f}")
+    cprint(f"{_luminosity((4.5, 6.7, 8.9)) = :.4f}")
 
 
 def get_color_choices(name: str = "", kind: str = "rich",
@@ -154,6 +183,57 @@ def get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
     return ""
 
 
+def get_palette(palette, kind, rgb=False, dbg=False):
+    """ Getting colors palette """
+
+    colors = COLOR_PALETTE[kind][palette]
+    if dbg:
+        return colors
+    return get_color_name("", rgb=rgb, palette=colors)
+
+
+def print_color(i, name, color_base="rich", marg=3, total_colors=10) -> None:
+    """ Printing a color tile
+
+        Args:
+            i (int): the index of the color
+            name (str): the name of the color
+            color_base (str): the base color
+            marg (int): the margin
+            total_colors (int): the total number of colors, for adjusting
+                the line width
+
+        Returns:
+            None (prints)
+    """
+
+    clr = name if color_base == "rich" else byte_rgb(name)
+    triplet = _get_rgb(clr)
+    if get_terminal_size().columns > 60:  # 61 -- max name + (r, g, b) length
+        name_triplet_txt = f"{name} {str(triplet)}"
+    else:
+        name_triplet_txt = f"{name}"
+    fg = get_contrast(clr)
+    tile_len = 7
+    style = f"{fg} on {clr}"
+    nr_txt = f" ({i + 1}) "
+    nr_txt_len = len(str(total_colors)) + 4
+    fill_len = (get_terminal_size().columns - tile_len*2 - nr_txt_len -
+                len(name_triplet_txt) - 2*marg - 3)
+
+    color_line = Text.assemble(("░", style),
+                               (MARKER0*marg, style),
+                               (MARKER1*tile_len, f"bold #000000 on {clr}"),
+                               (MARKER1*tile_len, f"bold #ffffff on {clr}"),
+                               (MARKER0*marg, style),
+                               (f"{nr_txt:>{nr_txt_len}}",
+                                "#ffffff on #000000"),
+                               (f" {name_triplet_txt}", style),
+                               (f"{' '*fill_len}", style),
+                               ("░", style))
+    cprint(color_line)
+
+
 def print_found(color: str, kind: str = "rich", rgb: bool = False) -> None:
     """ Print a found color """
 
@@ -174,74 +254,3 @@ def print_found(color: str, kind: str = "rich", rgb: bool = False) -> None:
                style=f"bold italic {color_code} on {bg}")
     msg.append(" copied to clipboard.")
     cprint(msg)
-
-
-def debug():
-    """ Function for debugging """
-
-    # arrays of colours:
-    # cprintd("CSS4_COLORS:")
-    # for i, color in enumerate(CSS4_COLORS):
-    #     cprintd(f"{i:>2}. {color = }", location="get_color_name")
-    # cprintd("ANSI_COLOR_NAMES:")
-    # for i, color in enumerate(ANSI_COLOR_NAMES):
-    #     cprintd(f"{i:>2}. {color = }", location="get_color_name")
-
-    cprint("_luminosity test", style="orange3 bold")
-    cprint(f"{_luminosity((0, 0, 0)) = :.4f}")
-    cprint(f"{_luminosity((1, 2, 3)) = :.4f}")
-    cprint(f"{_luminosity((4.5, 6.7, 8.9)) = :.4f}")
-
-
-def get_palette(palette, kind, rgb=False, dbg=False):
-    """ Getting colors palette """
-
-    colors = COLOR_PALETTE[kind][palette]
-    if dbg:
-        return colors
-    get_color_name("", rgb=rgb, palette=colors)
-
-
-def print_color(i, name, color_base="rich", marg=3, total_colors=10):
-    """ Printing a color tile
-
-        Args:
-            i (int): the index of the color
-            name (str): the name of the color
-            color_base (str): the base color
-            marg (int): the margin
-            total_colors (int): the total number of colors, for adjusting
-                the line width
-
-        Returns:
-            None (prints)
-    """
-
-    clr = name if color_base == "rich" else byte_rgb(name)
-    terminal_wd = get_terminal_size().columns
-    triplet = _get_rgb(clr)
-    if terminal_wd > 60:  # 61 -- max name + (r, g, b) length
-        name_triplet_txt = f"{name} {str(triplet)}"
-    else:
-        name_triplet_txt = f"{name}"
-    fg = get_contrast(clr)
-    tile_len = 7
-    tile_bound = MARKER0*marg
-    tile_body = MARKER1*tile_len
-    style = f"{fg} on {clr}"
-    nr_txt = f" ({i + 1}) "
-    nr_txt_len = len(str(total_colors)) + 4
-    fill_len = (terminal_wd - tile_len*2 - nr_txt_len -
-                len(name_triplet_txt) - 2*marg - 3)
-
-    color_line = Text.assemble(("░", style),
-                               (tile_bound, style),
-                               (tile_body, f"bold #000000 on {clr}"),
-                               (tile_body, f"bold #ffffff on {clr}"),
-                               (tile_bound, style),
-                               (f"{nr_txt:>{nr_txt_len}}",
-                                "#ffffff on #000000"),
-                               (f" {name_triplet_txt}", style),
-                               (f"{' '*fill_len}", style),
-                               ("░", style))
-    cprint(color_line)
