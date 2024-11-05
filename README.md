@@ -19,6 +19,7 @@
 - [Usage](#usage)
 - [Known Issues](#known-issues)
 - [Release History](#release-history)
+- [Links](#links)
 - [License](#license)
 - [Contact](#contact)
 <!-- - [Acknowledgments](#acknowledgments) -->
@@ -138,6 +139,10 @@ npm test
     - First working version of the package
 - 0.0.1
     - Work in progress
+
+## Links
+
+- [GitHub pages](https://pykhaz.github.io/khcolors/index.html)
 
 ## License
 
