@@ -2,7 +2,11 @@
 # project: khcolors
 
 """
+<<<<<<< HEAD
 Auxiliary module for khcolors (release package)
+=======
+Auxiliary module for khcolors (development package)
+>>>>>>> 9da312d76cd57573c91211f0f5128254f7e4aa6f
 """
 
 from matplotlib import colors as mcolors
@@ -41,6 +45,11 @@ for pair in zip(COLOR_PALETTE["css"]["base"], COLOR_PALETTE["css"]["bright"]):
     COLOR_PALETTE["css"]["base-bright"].extend(pair)
 
 
+class TestClass:
+    """ Test for docstrings and MkDocs… """
+    pass
+
+
 def _get_rgb(color):
     """ Converts color to r, g, b in range [0, 1] """
 
@@ -57,6 +66,12 @@ def _luminosity(rgb: tuple[float]) -> float:
     """ Calculates the luminosity of a color """
 
     return sum(rgb[i]*LMN_CMPS[i] for i in range(3))
+
+
+def afunction():
+    """ Test function """
+
+    pass
 
 
 def byte_rgb(color):

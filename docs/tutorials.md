@@ -24,7 +24,11 @@ The application was designed primarily for use in the terminal. After
         e.g. `blu` or `light`, `dark`, `spring`, `deep`, `sky`, etc.
 
         <figure>
+<<<<<<< HEAD
         <img src="./assets/khcolors_pale.png" alt="khcolors pale" width="600" />
+=======
+        <img src="./assets/khcolors_pale.png" alt="khcolors salmon" width="600" />
+>>>>>>> 9da312d76cd57573c91211f0f5128254f7e4aa6f
         </figure>
 
         - if `<color>` is a name of the palette \(`base` or `base-bright`),
@@ -38,7 +42,11 @@ The application was designed primarily for use in the terminal. After
         select the chosen shade with the number from the list.
 
         <figure>
+<<<<<<< HEAD
         <img src="./assets/khcolors_olive_nr2.png" alt="khcolors olive" width="600" />
+=======
+        <img src="/assets/khcolors_olive_nr2.png" alt="khcolors olive" width="600" />
+>>>>>>> 9da312d76cd57573c91211f0f5128254f7e4aa6f
         </figure>
 
         - if `<color>` does not exist in the palette, e.g. `lightbright`, the
@@ -54,7 +62,11 @@ The application was designed primarily for use in the terminal. After
     \(default is the colour name).
 
     <figure>
+<<<<<<< HEAD
     <img src="./assets/khcolors_sea_cr.png" alt="khcolors sea_cr" width="600" />
+=======
+    <img src="/assets/khcolors_sea_cr.png" alt="khcolors sea_cr" width="600" />
+>>>>>>> 9da312d76cd57573c91211f0f5128254f7e4aa6f
     </figure>
 
 ---
