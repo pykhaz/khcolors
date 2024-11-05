@@ -46,7 +46,7 @@ Example usage:
     - terminal:
 
     <figure>
-        <img src="/assets/khcolors_simple_salmon_nr3.png"
+        <img src="./assets/khcolors_simple_salmon_nr3.png"
             alt="khcolors salmon" width="600" />
         </figure>
 

@@ -2,6 +2,11 @@
 
 site_name: khcolors documentation
 
+theme:
+  name: "material"
+
+use_directory_urls: false
+
 plugins:
   - search
   - macros  # for variables
@@ -13,9 +18,6 @@ plugins:
             show_source: true
             heading_level: 0  # Nie generuj nagłówka dla modułu  # for docstring import
   # - footnotes  # ERR
-
-theme:
-  name: "material"
 
 nav:
   - khcolors documentation: index.md

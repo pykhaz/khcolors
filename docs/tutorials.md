@@ -24,14 +24,14 @@ The application was designed primarily for use in the terminal. After
         e.g. `blu` or `light`, `dark`, `spring`, `deep`, `sky`, etc.
 
         <figure>
-        <img src="/assets/khcolors_pale.png" alt="khcolors salmon" width="600" />
+        <img src="./assets/khcolors_pale.png" alt="khcolors salmon" width="600" />
         </figure>
 
         - if `<color>` is a name of the palette \(`base` or `base-bright`),
         whole chosen palette will be printed.
 
         <figure>
-        <img src="/assets/khcolors_base.png" alt="khcolors base" width="600" />
+        <img src="./assets/khcolors_base.png" alt="khcolors base" width="600" />
         </figure>
 
         - after being presented with the list of colours, you can simply
