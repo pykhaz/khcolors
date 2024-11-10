@@ -79,7 +79,7 @@ Colours of the border of each panel was chosen of a different shade (lines `18-2
 The result is presented in the following figure (line `39`):
 
 <figure>
-<img src="/assets/khcolors_3strings_rich_example.py.png" alt="3strings_rich.py"
+<img src="./assets/khcolors_3strings_rich_example.py.png" alt="3strings_rich.py"
         width="600" />
 </figure>
 
