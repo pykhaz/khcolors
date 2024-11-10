@@ -46,7 +46,7 @@ through these variable names, obviously, lines `22-24, 27, 28` and `39`).
 The script resulted in the following plot:
 
 <figure>
-<img src="/assets/cos_sin_x.png" alt="cos_sin_x.png" width="600" />
+<img src="./assets/cos_sin_x.png" alt="cos_sin_x.png" width="600" />
 </figure>
 
 In case of each of the colour variables, the name of the colour can be
@@ -59,7 +59,7 @@ $ khcolors <colour_name> -c
 and choosing the desired colour shade, e.g.
 
 <figure>
-<img src="/assets/khcolors_example_cos_sin_x.py.png" alt="khcolors pale -c" width="600" />
+<img src="./assets/khcolors_example_cos_sin_x.py.png" alt="khcolors pale -c" width="600" />
 </figure>
 
 When many colour names are needed, the full `rich` or `CSSR` colour spectrum

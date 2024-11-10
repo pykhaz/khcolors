@@ -12,7 +12,7 @@ installation[^1], it is possible to simply type `khcolors --help` in the termina
         will be copied to the clipboard.
 
         <figure>
-        <img src="/assets/khcolors_simple_salmon_nr3.png" alt="khcolors salmon" width="600" />
+        <img src="./assets/khcolors_simple_salmon_nr3.png" alt="khcolors salmon" width="600" />
         </figure>
 
         <!-- ![khcolors simple salmon nr3](assets/khcolors_simple_salmon_nr3.png) -->
@@ -38,7 +38,7 @@ installation[^1], it is possible to simply type `khcolors --help` in the termina
         select the chosen shade with the number from the list.
 
         <figure>
-        <img src="/assets/khcolors_olive_nr2.png" alt="khcolors olive" width="600" />
+        <img src="./assets/khcolors_olive_nr2.png" alt="khcolors olive" width="600" />
         </figure>
 
         - if `<color>` does not exist in the palette, e.g. `lightbright`, the
@@ -54,7 +54,7 @@ installation[^1], it is possible to simply type `khcolors --help` in the termina
     \(default is the colour name).
 
     <figure>
-    <img src="/assets/khcolors_sea_cr.png" alt="khcolors sea_cr" width="600" />
+    <img src="./assets/khcolors_sea_cr.png" alt="khcolors sea_cr" width="600" />
     </figure>
 
 

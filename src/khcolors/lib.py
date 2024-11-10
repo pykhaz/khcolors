@@ -127,6 +127,7 @@ def get_integer(prompt: str = None, limits: tuple[int | float] = None,
                            f"{limits[0]} ≤ n ≤ {limits[1]}, not {{number}}. "),
                 }
     ta_msg = "Try again."
+
     while True:
         try:
             ans = input(prompt)

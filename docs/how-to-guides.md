@@ -32,7 +32,7 @@ the `matplotlib` palette, simply use the  `-c` | `--css` option, e.g.
 `khcolors <searched_color_shade> -r`, e.g.
 
 <figure>
-<img src="/assets/khcolors_pale_r.png" alt="khcolors pale -r" width="600" />
+<img src="./assets/khcolors_pale_r.png" alt="khcolors pale -r" width="600" />
 </figure>
 
 To combine both flags for, e.g. golden, it is possible to type
@@ -40,5 +40,5 @@ To combine both flags for, e.g. golden, it is possible to type
 `khcolors golden -cr`:
 
 <figure>
-<img src="/assets/khcolors_golden_cr.png" alt="khcolors golden -cr" width="600" />
+<img src="./assets/khcolors_golden_cr.png" alt="khcolors golden -cr" width="600" />
 </figure>
