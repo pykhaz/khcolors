@@ -1,0 +1,78 @@
+:root {
+    --border-kind: none;
+}
+
+span.normal {
+    font-size: 1em;
+    font-family: monospace;
+    vertical-align: top;
+    /* color: #888888; */
+    border: var(--border-kind) 1px yellow;
+}
+
+span.normal::after {
+    content: ".";
+    margin-right: 0.01em;  /* Odstęp między kropką a numerem */
+}
+
+td.linenos {
+    height: 50%;
+    padding: 0;
+    border: var(--border-kind) 1px green;
+}
+/* previous version: */
+/* :root { */
+/*     --border-kind: none; */
+/* } */
+
+/* .md-typeset .codehilite .linenos { */
+/*     margin: 0px; */
+/*     border: 0px; */
+/*     padding: 0; */
+/* } */
+
+/* .linenodiv{ */
+/*     padding: 0px; */
+/*     margin: 0px; */
+/*     vertical-align: top; */
+/* } */
+
+/* span.normal { */
+/*     font-size: 0.52em; */
+/*     font-family: monospace; */
+/*     vertical-align: top; */
+/*     /1* color: #888888; *1/ */
+/*     border: var(--border-kind) 1px yellow; */
+/* } */
+
+/* span.normal::after { */
+/*     content: "."; */
+/*     margin-right: 0.01em;  /1* Odstęp między kropką a numerem *1/ */
+/* } */
+
+/* (this was the culprit!) */
+/* code span { */
+/*     font-size: 0.95em; */
+/*     border-bottom: none 1px red; */
+/* } */
+
+/* .highlight table { */
+/*     width: 100%; */
+/* } */
+/* .highlight .linenos { */
+/*     /1* padding-right: 10px; *1/ */
+/*     color: #999; */
+
+/* } */
+
+/* div.linenodiv pre { */
+/*     padding: 0px; */
+/*     margin: 0px; */
+/*     border: var(--border-kind) 1px green; */
+/* } */
+
+/* td.linenos { */
+/*     margin: 0; */
+/*     padding: 0; */
+/*     max-widht: 10px; */
+/* } */
