@@ -1,0 +1,44 @@
+# .repo_data for khcolors
+
+https://github.com/heliotech/khcolors.git
+git@github.com:heliotech/khcolors.git
+
+…or create a new repository on the command line
+
+echo "# khcolors" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:heliotech/khcolors.git
+git push -u origin main
+
+…or push an existing repository from the command line
+
+git remote add origin git@github.com:heliotech/khcolors.git
+git branch -M main
+git push -u origin main
+
+# structure:
+# khcolors
+├── src
+│   └── khcolors
+│       ├── __about__.py
+│       └── __init__.py
+├── tests
+│   └── __init__.py
+├── LICENSE.txt
+├── README.md
+└── pyproject.toml
+
+# cloning the repo
+
+`git clone https://github.com/twoje-repo/khcolors.git`
+
+# building the package
+
+```cd khcolors
+hatch build```
+or
+`pipx run hatch build`
+
