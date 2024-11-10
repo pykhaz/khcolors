@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="index.html">
       
-      
-        <link rel="next" href="how-to-guides.html">
+        <link rel="next" href="tutorials.html">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Tutorials - khcolors documentation</title>
+        <title>khcolors documentation</title>
       
     
     
@@ -76,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#getting-started" class="md-skip">
+        <a href="#index" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tutorials
+              khcolors documentation
             
           </span>
         </div>
@@ -228,26 +226,6 @@
       
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="index.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    khcolors documentation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -262,18 +240,18 @@
           
   
   <span class="md-ellipsis">
-    Tutorials
+    khcolors documentation
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="tutorials.html" class="md-nav__link md-nav__link--active">
+      <a href="index.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Tutorials
+    khcolors documentation
   </span>
   
 
@@ -293,9 +271,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
+  <a href="#index" class="md-nav__link">
     <span class="md-ellipsis">
-      Getting started
+      Index
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
     </span>
   </a>
   
@@ -305,6 +292,26 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -394,9 +401,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
+  <a href="#index" class="md-nav__link">
     <span class="md-ellipsis">
-      Getting started
+      Index
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
     </span>
   </a>
   
@@ -417,122 +433,153 @@
                   
 
 
-  <h1>Tutorials</h1>
+  <h1>khcolors documentation</h1>
 
-<h2 id="getting-started">Getting started</h2>
-<p>The application was designed primarily for use in the terminal. After
-installation<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, it is possible to simply type <code>khcolors --help</code> in the terminal.</p>
-<ul>
-<li>
-<p>Basic usage</p>
-<ul>
-<li>
-<p><code>TL;DR</code></p>
-<ul>
-<li>Go to the terminal, type <code>khcolors &lt;color&gt; [options]</code>,</li>
-<li>Choose a colour number from the list presented -- the chosen colour
-will be copied to the clipboard.</li>
-</ul>
-<p><figure>
-<img src="/assets/khcolors_simple_salmon_nr3.png" alt="khcolors salmon" width="600" />
-</figure></p>
-<!-- <img alt="khcolors simple salmon nr3" src="assets/khcolors_simple_salmon_nr3.png" /> -->
-</li>
-<li>
-<p>details:</p>
-<ul>
-<li>the <code>&lt;color&gt;</code> to look for can be a base name of a colour, e.g.
-<code>green</code>, <code>cyan</code>, etc., or it can be just a part of the name,
-e.g. <code>blu</code> or <code>light</code>, <code>dark</code>, <code>spring</code>, <code>deep</code>, <code>sky</code>, etc.</li>
-</ul>
-<p><figure>
-<img src="./assets/khcolors_pale.png" alt="khcolors salmon" width="600" />
-</figure></p>
-<ul>
-<li>if <code>&lt;color&gt;</code> is a name of the palette (<code>base</code> or <code>base-bright</code>),
-whole chosen palette will be printed.</li>
-</ul>
-<p><figure>
-<img src="./assets/khcolors_base.png" alt="khcolors base" width="600" />
-</figure></p>
-<ul>
-<li>after being presented with the list of colours, you can simply
-select the chosen shade with the number from the list.</li>
-</ul>
-<p><figure>
-<img src="/assets/khcolors_olive_nr2.png" alt="khcolors olive" width="600" />
-</figure></p>
-<ul>
-<li>if <code>&lt;color&gt;</code> does not exist in the palette, e.g. <code>lightbright</code>, the
-application exits with a message
-<code>No color found for 'lightbright', exiting.</code></li>
-</ul>
-</li>
-</ul>
-<p><a id="basic-usage-options"></a>
-- options:</p>
-<ul>
-<li><code>-c</code> / <code>-css</code>: prints the list of colours from the <code>CSS4</code> palette
-(the default palette is <code>rich</code>).</li>
-<li><code>-r</code> / <code>-rgb</code>: the chosen colour is copied as an <code>(r, g, b)</code> tuple
-(default is the colour name).</li>
-</ul>
-<p><figure>
-<img src="/assets/khcolors_sea_cr.png" alt="khcolors sea_cr" width="600" />
-</figure></p>
-</li>
-</ul>
-<div class="footnote">
-<hr />
+<h2 id="index">Index</h2>
 <ol>
-<li id="fn:1">
-<p><strong>Installation</strong></p>
-<ol>
-<li>
-<p>The package can be install with <code>pip</code>:</p>
-</li>
-<li>
-<p><code>python -m pip install khcolors</code></p>
-</li>
+<li><a href="tutorials.html">Tutorials</a></li>
+<li><a href="how-to-guides.html">How-To Guides</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="explanation.html">Explanation</a></li>
 </ol>
-<p>or</p>
-<ol>
-<li>
-<p>cloned from the github repository:</p>
-<ul>
-<li><code>git clone https://github.com/pykhaz/khcolors.git</code> (in the terminal)</li>
+<!-- ## Project Overview -->
+<!-- <span class="font-size: 140%;">Project Overview</span> -->
+<h2 id="overview">Overview</h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="khcolors"></a>
+    <div class="doc doc-contents first">
+
+        <p><code>khcolors</code> - a colour selection and insertion tool for terminal applications.</p>
+<p>This package provides utilities for selecting and formatting colors in terminal
+and data visualization applications, such as matplotlib. It also provides
+assistance while working with the <code>rich</code> python library.</p>
+<p>Source files:</p>
+<div class="highlight"><pre><span></span><code>└── src
+    └── khcolors
+        ├── __about__.py
+        ├── colors_util.py
+        ├── __init__.py
+        ├── lib.py
+        └── __main__.py
+</code></pre></div>
+
+
+<details class="main-modules" open>
+  <summary>Main modules</summary>
+  <ul>
+<li><code>colors_util</code>: Core functionality for color selection.</li>
+<li><code>lib</code>: Helper functions for managing color names and palettes.</li>
 </ul>
-<p>or</p>
-</li>
-<li>
-<p>downloaded from the repository archive:</p>
-<ul>
-<li>
-<p>Go to <a href="https://github.com/pykhaz/khcolors">github.com/pykhaz/khcolors</a>
-and download the archive of repository
-(menu button "&lt;&gt; Code" -&gt; "Download ZIP").</p>
-</li>
-<li>
-<p>Unzip the archive: <code>unzip khcolors-main.zip</code></p>
-</li>
+</details>
+
+<details class="most-important-functions" open>
+  <summary>Most important functions</summary>
+  <ul>
+<li>in <code>colors_util</code>:<ul>
+<li><code>find_color</code>: getting a list of colours with <code>name</code> in them</li>
+<li><code>get_color_name</code>: getting the colour name from rich or CSS4 palettes</li>
+<li><code>print_color</code>: printing the chosen colour</li>
 </ul>
 </li>
-<li>
-<p>and installed:</p>
+</ul>
+<p>(see <a href="reference/">Reference</a> for details)</p>
+</details>
+
+<details class="installation" open>
+  <summary>Installation</summary>
+  <p><code>pip install khcolors</code></p>
+<p>(see <a href="tutorials/#installation-footnote">Installation</a> for details)</p>
+</details>
+
+<details class="example-usage" open>
+  <summary>Example usage</summary>
+  <ul>
+<li>terminal:</li>
+</ul>
+<figure>
+    <img src="./assets/khcolors_simple_salmon_nr3.png"
+        alt="khcolors salmon" width="600" />
+    </figure>
+
+<p>(see <a href="how-to-guides/">How-to guides</a> for more examples.)</p>
 <ul>
 <li>
-<p><code>cd</code> into <code>khcolors</code> (if cloned), or <code>hcolors-main</code> (if downloaded).</p>
-</li>
-<li>
-<p>install the package: <code>python -m pip install .</code></p>
+<p>script/REPL:</p>
+<p><code>&gt;&gt;&gt; from khcolors.colors_util import ANSI_COLOR_NAMES as palette</code></p>
+<p><code>&gt;&gt;&gt; from khcolors.colors_util import find_color</code></p>
+<p><code>&gt;&gt;&gt; shades = find_color(palette, "red")</code></p>
+<p><code>&gt;&gt;&gt; for i, color in enumerate(shades):</code></p>
+<p><code>...     print(f"{i}. {color}")</code></p>
+<p><code>...</code></p>
+<p><code>0. red</code></p>
+<p><code>1. bright_red</code></p>
+<p><code>2. dark_red</code></p>
+<p><code>3. red3</code></p>
+<p><code>4. medium_violet_red</code></p>
+<p><code>5. indian_red</code></p>
+<p><code>6. red1</code></p>
+<p><code>7. orange_red1</code></p>
+<p><code>8. indian_red1</code></p>
+<p><code>9. pale_violet_red1</code></p>
 </li>
 </ul>
-</li>
-</ol>
-<p><a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
+</details>
+
+<details class="dependencies" open>
+  <summary>Dependencies</summary>
+  <ul>
+<li><code>matplotlib</code></li>
+<li><code>pyperclip</code></li>
+<li><code>rich</code></li>
+</ul>
+</details>        <p>For <code>README</code> file, visit: <a href"https://github.com/heliotech/khcolors">
+    https://github.com/heliotech/khcolors</a></p>
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div><!-- # Welcome to MkDocs -->
+
+<!-- For full documentation visit [mkdocs.org](https://www.mkdocs.org). -->
+
+<!-- ## Commands -->
+
+<!-- * `mkdocs new [dir-name]` - Create a new project. -->
+<!-- * `mkdocs serve` - Start the live-reloading docs server. -->
+<!-- * `mkdocs build` - Build the documentation site. -->
+<!-- * `mkdocs -h` - Print help message and exit. -->
+
+<!-- ## Project layout -->
+
+<!--     mkdocs.yml    # The configuration file. -->
+<!--     docs/ -->
+<!--         index.md  # The documentation homepage. -->
+<!--         ...       # Other markdown pages, images and other files. -->
 
 
 
