@@ -9,7 +9,7 @@
 
 
 """
-`khcolors` - a colour selection and insertion tool for terminal applications.
+`khcolors` - an application for colour selection and colour names insertion.
 
 This package provides utilities for selecting and formatting colors in terminal
 and data visualization applications, such as matplotlib. It also provides

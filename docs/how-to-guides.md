@@ -21,11 +21,7 @@ the `matplotlib` palette, simply use the  `-c` | `--css` option, e.g.
     khcolors <searchd_color_shade> -c
 
 <figure>
-<<<<<<< HEAD
 <img src="./assets/khcolors_pale_c.png" alt="khcolors pale -c" width="600" />
-=======
-<img src="/assets/khcolors_pale_c.png" alt="khcolors pale -c" width="600" />
->>>>>>> 9da312d76cd57573c91211f0f5128254f7e4aa6f
 </figure>
 
 ## How To Copy to Clipboard an `RGB` Tuple
@@ -36,11 +32,7 @@ the `matplotlib` palette, simply use the  `-c` | `--css` option, e.g.
 `khcolors <searchd_color_shade> -r`, e.g.
 
 <figure>
-<<<<<<< HEAD
 <img src="./assets/khcolors_pale_r.png" alt="khcolors pale -r" width="600" />
-=======
-<img src="/assets/khcolors_pale_r.png" alt="khcolors pale -r" width="600" />
->>>>>>> 9da312d76cd57573c91211f0f5128254f7e4aa6f
 </figure>
 
 To combine both flags for, e.g. golden, it is possible to type
@@ -48,9 +40,5 @@ To combine both flags for, e.g. golden, it is possible to type
 `khcolors golden -cr`:
 
 <figure>
-<<<<<<< HEAD
 <img src="./assets/khcolors_golden_cr.png" alt="khcolors golden -cr" width="600" />
-=======
-<img src="/assets/khcolors_golden_cr.png" alt="khcolors golden -cr" width="600" />
->>>>>>> 9da312d76cd57573c91211f0f5128254f7e4aa6f
 </figure>

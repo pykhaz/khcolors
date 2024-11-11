@@ -4,5 +4,5 @@
 # (can be also `PYTHONPATH=src mkdocs serve`)
 
 export PYTHONPATH=src
-mkdocs serve
+mkdocs serve --dev-addr=127.0.0.2:8080
 

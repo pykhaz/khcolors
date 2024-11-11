@@ -16,8 +16,14 @@ plugins:
         python:
           options:
             show_source: true
-            heading_level: 0  # Nie generuj nagłówka dla modułu  # for docstring import
-  # - footnotes  # ERR
+            heading_level: 0  # No heading for module # for docstring import
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.snippets
+  - footnotes
 
 nav:
   - khcolors documentation: index.md

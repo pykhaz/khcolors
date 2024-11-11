@@ -72,7 +72,7 @@ a simple example of a script generating 4 different panels.
 Colours for the contents of each panel were defined in lines `11-16`.
 Colours of the border of each panel was chosen of a different shade (lines `18-23`).
 
-```python hl_lines="11-16 18-23 39" title="cos_sin_x.py" linenums="1"
+```python hl_lines="11-16 18-23 39" title="3strings_rich_example.py" linenums="1"
 --8<-- "docs/assets/3strings_rich_example.py"
 ```
 

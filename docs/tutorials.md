@@ -12,7 +12,7 @@ The application was designed primarily for use in the terminal. After
         will be copied to the clipboard.
 
         <figure>
-        <img src="/assets/khcolors_simple_salmon_nr3.png" alt="khcolors salmon" width="600" />
+        <img src="./assets/khcolors_simple_salmon_nr3.png" alt="khcolors salmon" width="600" />
         </figure>
 
         <!-- ![khcolors simple salmon nr3](assets/khcolors_simple_salmon_nr3.png) -->
