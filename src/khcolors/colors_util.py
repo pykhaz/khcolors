@@ -35,10 +35,12 @@ import pyperclip
 try:
     from .lib import COLOR_PALETTE, _get_rgb, _luminosity, byte_rgb
     from .lib import get_contrast_color as get_contrast
+    from .lib import get_integer
     # from .lib import cprintd
 except ImportError:
     from lib import COLOR_PALETTE, _get_rgb, _luminosity, byte_rgb
     from lib import get_contrast_color as get_contrast
+    from lib import get_integer
     # from lib import cprintd
 
 FTITLE = __file__.split("/", maxsplit=-1)[-1].split(".", maxsplit=-1)[0]
@@ -157,26 +159,21 @@ def get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
         print_color(i, color, color_base=kind, marg=marg,
                     total_colors=total_colors)
 
-    nr_to_copy = None
-    while nr_to_copy is None:
+    prompt = (f"Colour number to copy? (1-{total_colors}, "
+              "<Enter> to exit): ")
+    while True:
         try:
-            to_copy = input(f"Color number to copy? (1-{total_colors}, "
-                            "<Enter> to exit): ")
-            if to_copy == "":
+            nr_to_copy = get_integer(prompt, limits=(1, total_colors))
+            if nr_to_copy is None:
                 return ""
-            nr_to_copy = int(to_copy) - 1
-            if 0 <= nr_to_copy <= total_colors - 1:
-                chosen_color = found[nr_to_copy]
+            chosen_color = found[nr_to_copy - 1]
+            if not rgb:
+                pyperclip.copy(chosen_color)
+            else:
                 rgb_tp = _get_rgb(chosen_color)
-                if not rgb:
-                    pyperclip.copy(chosen_color)
-                else:
-                    pyperclip.copy(str(rgb_tp))
-                print_found(chosen_color, kind=kind, rgb=rgb)
-                return chosen_color
-            cprint(f"Number should have been 0 ≤ i ≤ {total_colors}. "
-                   "Not copying.")
-            nr_to_copy = None
+                pyperclip.copy(str(rgb_tp))
+            print_found(chosen_color, kind=kind, rgb=rgb)
+            return chosen_color
         except ValueError:
             cprint("Wrong number, leave empty to exit.")
 

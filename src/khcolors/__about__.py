@@ -2,7 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 
-__version__ = "0.3.3"
+__version__ = "0.3.4"
+#  - new function for getting user input: get_integer
+# __version__ = "0.3.3"
 # updated README.md
 # __version__ = "0.3.2"
 # big change/many changes:

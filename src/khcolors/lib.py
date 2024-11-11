@@ -45,11 +45,6 @@ for pair in zip(COLOR_PALETTE["css"]["base"], COLOR_PALETTE["css"]["bright"]):
     COLOR_PALETTE["css"]["base-bright"].extend(pair)
 
 
-class TestClass:
-    """ Test for docstrings and MkDocs… """
-    pass
-
-
 def _get_rgb(color):
     """ Converts color to r, g, b in range [0, 1] """
 
@@ -66,12 +61,6 @@ def _luminosity(rgb: tuple[float]) -> float:
     """ Calculates the luminosity of a color """
 
     return sum(rgb[i]*LMN_CMPS[i] for i in range(3))
-
-
-def afunction():
-    """ Test function """
-
-    pass
 
 
 def byte_rgb(color):
@@ -117,3 +106,31 @@ def get_contrast_color(color: Color) -> str:
     # lmn_inv_hex = "#" + f"{int(luminosity_inv):02x}" * 3
     # return lmn_inv_hex
     return result
+
+
+def get_integer(prompt: str = "Input an integer: ", limits: tuple = None,
+                nl: str = "\n"):
+    """ Getting an integer number
+
+        Args:
+            prompt (str, optional): Prompt to display. Defaults to None.
+            limits (tuple, optional): Limits for the number.
+                Defaults to None.
+            nl (str, optional): Newline character. Defaults to "\n".
+    """
+
+    limits = limits or (-float("inf"), float("inf"))
+    while True:
+        try:
+            ans = input(f"{prompt}{nl}")
+            if ans == "":
+                return
+
+            ans = int(ans)
+            if limits[0] <= ans <= limits[1]:
+                return ans
+            else:
+                print("Number should be between "
+                      f"{limits[0]} ≤ n ≤ {limits[1]}. Try again.")
+        except ValueError:
+            print(f"Invalid input: {ans!r}. Try again")
