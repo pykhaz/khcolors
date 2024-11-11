@@ -424,7 +424,7 @@ or <strong>235</strong> items in the <code>rich</code> palette. In such a case 1
 that there are, literally, tens or even hundreds, of possible choices, and 2)
 a larger number of colours results in longer names, which means longer
 strings to remember and type (when the risk of errors also increases).</p>
-<p>All of the above gave an impulse to create an application[^1] designed to
+<p>All of the above gave an impulse to create an application<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> designed to
 assist in selecting colour names and inserting them into code. The author's
 recent fascination with applications that operate in terminal emulators
 resulted in the <code>khcolors</code> project.</p>
@@ -436,8 +436,150 @@ utility for choosing colour names, the axes legends and plot labels were
 assigned with different colours. Such an approach resulted in 6 colour names
 (lines <code>6-11</code>; when a certain colour value was to be specified, it was done
 through these variable names, obviously, lines <code>22-24, 27, 28</code> and <code>39</code>).</p>
-<pre><code class="language-python">--8&lt;-- &quot;docs/assets/cos_sin_x.py&quot;
-</code></pre>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">cos_sin_x.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#__codelineno-0-39">39</a></span>
+<span class="normal"><a href="#__codelineno-0-40">40</a></span>
+<span class="normal"><a href="#__codelineno-0-41">41</a></span>
+<span class="normal"><a href="#__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#__codelineno-0-44">44</a></span>
+<span class="normal"><a href="#__codelineno-0-45">45</a></span>
+<span class="normal"><a href="#__codelineno-0-46">46</a></span>
+<span class="normal"><a href="#__codelineno-0-47">47</a></span>
+<span class="normal"><a href="#__codelineno-0-48">48</a></span>
+<span class="normal"><a href="#__codelineno-0-49">49</a></span>
+<span class="normal"><a href="#__codelineno-0-50">50</a></span>
+<span class="normal"><a href="#__codelineno-0-51">51</a></span>
+<span class="normal"><a href="#__codelineno-0-52">52</a></span>
+<span class="normal"><a href="#__codelineno-0-53">53</a></span>
+<span class="normal"><a href="#__codelineno-0-54">54</a></span>
+<span class="normal"><a href="#__codelineno-0-55">55</a></span>
+<span class="normal"><a href="#__codelineno-0-56">56</a></span>
+<span class="normal"><a href="#__codelineno-0-57">57</a></span>
+<span class="normal"><a href="#__codelineno-0-58">58</a></span>
+<span class="normal"><a href="#__codelineno-0-59">59</a></span>
+<span class="normal"><a href="#__codelineno-0-60">60</a></span>
+<span class="normal"><a href="#__codelineno-0-61">61</a></span>
+<span class="normal"><a href="#__codelineno-0-62">62</a></span>
+<span class="normal"><a href="#__codelineno-0-63">63</a></span>
+<span class="normal"><a href="#__codelineno-0-64">64</a></span>
+<span class="normal"><a href="#__codelineno-0-65">65</a></span>
+<span class="normal"><a href="#__codelineno-0-66">66</a></span>
+<span class="normal"><a href="#__codelineno-0-67">67</a></span>
+<span class="normal"><a href="#__codelineno-0-68">68</a></span>
+<span class="normal"><a href="#__codelineno-0-69">69</a></span>
+<span class="normal"><a href="#__codelineno-0-70">70</a></span>
+<span class="normal"><a href="#__codelineno-0-71">71</a></span>
+<span class="normal"><a href="#__codelineno-0-72">72</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># cos_sin_x.py</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="hll"><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
+</span><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="hll">
+</span><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="hll"><span class="n">color_cos</span> <span class="o">=</span> <span class="s2">&quot;yellowgreen&quot;</span>
+</span><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="hll"><span class="n">color_sin</span> <span class="o">=</span> <span class="s2">&quot;orange&quot;</span>
+</span><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="hll">
+</span><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="hll"><span class="n">color_label_cos</span> <span class="o">=</span> <span class="s2">&quot;lawngreen&quot;</span>
+</span><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="n">color_label_sin</span> <span class="o">=</span> <span class="s2">&quot;orangered&quot;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="n">cos_x</span><span class="p">,</span> <span class="n">sin_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax_0</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="n">ax_0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;cos(x) and sin(x)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="n">color_sincos</span> <span class="o">=</span> <span class="s2">&quot;mediumslateblue&quot;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="n">color_label_cos</span> <span class="o">=</span> <span class="s2">&quot;lawngreen&quot;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="hll"><span class="n">color_label_sin</span> <span class="o">=</span> <span class="s2">&quot;orangered&quot;</span>
+</span><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="hll"><span class="n">color_label_sincos</span> <span class="o">=</span> <span class="s2">&quot;slateblue&quot;</span>
+</span><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="hll">
+</span><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="n">nr_pts</span> <span class="o">=</span> <span class="mi">1000</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">nr_pts</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="hll"><span class="n">cos_x</span><span class="p">,</span> <span class="n">sin_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="hll"><span class="n">sin_x_cos_x</span> <span class="o">=</span> <span class="n">sin_x</span><span class="o">*</span><span class="n">cos_x</span>
+</span><a id="__codelineno-0-29" name="__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax_0</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="n">ax_0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;sin(x), cos(x) and sin(x)*cos(x)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="n">ax_1</span> <span class="o">=</span> <span class="n">ax_0</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="n">ax_0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cos_x</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_label_cos</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cos(x)&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="n">ax_1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sin_x</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_sin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sin(x)&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="hll"><span class="n">ax_0</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span><a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="n">ax_0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;cos(x)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_cos</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="n">ax_1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_sin</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="n">ax_1</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="n">ax_1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sin_x_cos_x</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_sincos</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sin(x)*cos(x)&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="n">ax_0</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="n">ax_0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_sin</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="n">ax_1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;cos(x)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_cos</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="n">ax_1</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="n">max_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">sin_x_cos_x</span><span class="p">)</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="n">max_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">max_value</span><span class="p">)</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-6</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="n">max_idc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">sin_x_cos_x</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">tolerance</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="n">x_annot</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">max_idc</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="n">y_annot</span> <span class="o">=</span> <span class="n">sin_x_cos_x</span><span class="p">[</span><span class="n">max_idc</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="n">ax_1</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a>    <span class="s1">&#39;sin(x)*cos(x)&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>    <span class="n">color</span><span class="o">=</span><span class="n">color_label_sincos</span><span class="p">,</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x_annot</span><span class="p">,</span> <span class="n">y_annot</span><span class="p">),</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>                    <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">),</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>    <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="p">)</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="n">ax_0</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="n">ax_1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;cos_sin_x.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
 <p>The script resulted in the following plot:</p>
 <figure>
 <img src="./assets/cos_sin_x.png" alt="cos_sin_x.png" width="600" />
@@ -445,8 +587,8 @@ through these variable names, obviously, lines <code>22-24, 27, 28</code> and <c
 
 <p>In case of each of the colour variables, the name of the colour can be
 conveniently chosen simply by typing in the terminal:</p>
-<pre><code class="language-bash">$ khcolors &lt;colour_name&gt; -c
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>khcolors<span class="w"> </span>&lt;colour_name&gt;<span class="w"> </span>-c
+</code></pre></div>
 <p>and choosing the desired colour shade, e.g.</p>
 <figure>
 <img src="./assets/khcolors_example_cos_sin_x.py.png" alt="khcolors pale -c" width="600" />
@@ -459,18 +601,100 @@ presented with the application might prove useful.</p>
 a simple example of a script generating 4 different panels.
 Colours for the contents of each panel were defined in lines <code>11-16</code>.
 Colours of the border of each panel was chosen of a different shade (lines <code>18-23</code>).</p>
-<pre><code class="language-python">--8&lt;-- &quot;docs/assets/3strings_rich_example.py&quot;
-</code></pre>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">3strings_rich_example.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="ch">#!/usr/bin/env python3</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1"># 3strings_rich_example.py</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="kn">from</span> <span class="nn">rich.columns</span> <span class="kn">import</span> <span class="n">Columns</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="kn">from</span> <span class="nn">rich.console</span> <span class="kn">import</span> <span class="n">Console</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="kn">from</span> <span class="nn">rich.panel</span> <span class="kn">import</span> <span class="n">Panel</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="kn">from</span> <span class="nn">rich.text</span> <span class="kn">import</span> <span class="n">Text</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="hll"><span class="n">styles</span> <span class="o">=</span> <span class="p">{</span>
+</span><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="hll">    <span class="s1">&#39;fstring&#39;</span><span class="p">:</span> <span class="s1">&#39;bold cyan&#39;</span><span class="p">,</span>
+</span><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="hll">    <span class="s1">&#39;raw&#39;</span><span class="p">:</span> <span class="s1">&#39;bold red3&#39;</span><span class="p">,</span>
+</span><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="hll">    <span class="s1">&#39;regular&#39;</span><span class="p">:</span> <span class="s1">&#39;bold  bright_yellow&#39;</span><span class="p">,</span>  <span class="c1"># …should be some shade of yellow…</span>
+</span><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="hll">    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;bold bright_blue&#39;</span><span class="p">,</span>
+</span><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="hll"><span class="p">}</span>
+</span><a id="__codelineno-2-17" name="__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="hll"><span class="n">panel_colors</span> <span class="o">=</span> <span class="p">{</span>
+</span><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="hll">    <span class="s1">&#39;fstring&#39;</span><span class="p">:</span> <span class="s1">&#39;cyan1&#39;</span><span class="p">,</span>
+</span><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="hll">    <span class="s1">&#39;raw&#39;</span><span class="p">:</span> <span class="s1">&#39;red1&#39;</span><span class="p">,</span>
+</span><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="hll">    <span class="s1">&#39;regular&#39;</span><span class="p">:</span> <span class="s1">&#39;light_yellow3&#39;</span><span class="p">,</span>
+</span><a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="hll">    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;deep_sky_blue3&#39;</span><span class="p">,</span>
+</span><a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="hll"><span class="p">}</span>
+</span><a id="__codelineno-2-24" name="__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="n">fstring</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;f&quot;</span><span class="si">{strings}</span><span class="s1">&quot;&#39;</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;fstring&#39;</span><span class="p">])</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="n">raw</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;r&quot;raw strings&quot;&#39;</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;raw&#39;</span><span class="p">])</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="n">regular</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;&quot;regular string&quot;&#39;</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;regular&#39;</span><span class="p">])</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="n">title</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;3 kinds of string in python&#39;</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a>             <span class="n">style</span><span class="o">=</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">])</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="n">cn</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="n">cn</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">Panel</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">border_style</span><span class="o">=</span><span class="n">panel_colors</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]))</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="n">panels</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34"></a>    <span class="n">Panel</span><span class="p">(</span><span class="n">regular</span><span class="p">,</span> <span class="n">border_style</span><span class="o">=</span><span class="n">panel_colors</span><span class="p">[</span><span class="s1">&#39;regular&#39;</span><span class="p">]),</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35"></a>    <span class="n">Panel</span><span class="p">(</span><span class="n">fstring</span><span class="p">,</span> <span class="n">border_style</span><span class="o">=</span><span class="n">panel_colors</span><span class="p">[</span><span class="s1">&#39;fstring&#39;</span><span class="p">]),</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36"></a>    <span class="n">Panel</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">border_style</span><span class="o">=</span><span class="n">panel_colors</span><span class="p">[</span><span class="s1">&#39;raw&#39;</span><span class="p">]),</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="p">]</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38"></a>
+<a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="hll"><span class="n">cn</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">Columns</span><span class="p">(</span><span class="n">panels</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</span></code></pre></div></td></tr></table></div>
 <p>The result is presented in the following figure (line <code>39</code>):</p>
 <figure>
 <img src="./assets/khcolors_3strings_rich_example.py.png" alt="3strings_rich.py"
         width="600" />
 </figure>
 
-<p>[^1]:While it is indeed possible to remember all the names of colours,</p>
-<pre><code>such an approach in the end would require more typing (with higher
-risk of mistakes), and... more typing.
-</code></pre>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>While it is indeed possible to remember all the names of colours,</p>
+<p>such an approach in the end would require more typing (with higher
+risk of mistakes), and... more typing.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
