@@ -14,8 +14,8 @@ color_label_sin = "orangered"
 x = np.linspace(0, 2*np.pi, 360, endpoint=True)
 cos_x, sin_x = np.cos(x), np.sin(x)
 
-fig, ax_0 = plt.subplots(figsize=(8, 6))
-ax_0.set_title("cos(x) and sin(x)", fontsize=16)
+fig, ax_0 = plt.subplots(figsize=(8, 6), num="sin(x), cos(x), sin(x)·cos(x)")
+# ax_0.set_title("…cos(x) and sin(x)", fontsize=16)
 
 color_sincos = "mediumslateblue"
 color_label_cos = "lawngreen"
@@ -26,9 +26,6 @@ nr_pts = 1000
 x = np.linspace(0, 2*np.pi, nr_pts, endpoint=True)
 cos_x, sin_x = np.cos(x), np.sin(x)
 sin_x_cos_x = sin_x*cos_x
-
-fig, ax_0 = plt.subplots(figsize=(8, 6))
-ax_0.set_title("sin(x), cos(x) and sin(x)*cos(x)", fontsize=16)
 
 ax_1 = ax_0.twinx()
 
@@ -41,7 +38,7 @@ ax_0.set_ylabel("cos(x)", color=color_cos, fontsize=14)
 ax_1.set_ylabel("sin(x)", color=color_sin, fontsize=14)
 ax_1.set_yticks([])
 
-ax_1.plot(x, sin_x_cos_x, lw=3, color=color_sincos, label='sin(x)*cos(x)')
+ax_1.plot(x, sin_x_cos_x, lw=3, color=color_sincos, label='sin(x)·cos(x)')
 
 ax_0.set_xlabel("x", fontsize=14)
 ax_0.set_ylabel("sin(x)", color=color_sin, fontsize=14)
@@ -55,7 +52,7 @@ max_idc = np.where(np.isclose(sin_x_cos_x, max_value, atol=tolerance))[0]
 x_annot = x[max_idc[1]]
 y_annot = sin_x_cos_x[max_idc[1]]
 ax_1.annotate(
-    'sin(x)*cos(x)',
+    'sin(x)·cos(x)',
     color=color_label_sincos,
     xy=(x_annot, y_annot),
     xytext=(4.5, 0.9),
