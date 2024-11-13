@@ -7,20 +7,17 @@ plt.style.use('dark_background')
 
 color_cos = "yellowgreen"
 color_sin = "orange"
+color_sincos = "mediumslateblue"
 
 color_label_cos = "lawngreen"
 color_label_sin = "orangered"
+color_label_sincos = "slateblue"
 
 x = np.linspace(0, 2*np.pi, 360, endpoint=True)
 cos_x, sin_x = np.cos(x), np.sin(x)
 
 fig, ax_0 = plt.subplots(figsize=(8, 6), num="sin(x), cos(x), sin(x)·cos(x)")
 # ax_0.set_title("…cos(x) and sin(x)", fontsize=16)
-
-color_sincos = "mediumslateblue"
-color_label_cos = "lawngreen"
-color_label_sin = "orangered"
-color_label_sincos = "slateblue"
 
 nr_pts = 1000
 x = np.linspace(0, 2*np.pi, nr_pts, endpoint=True)
