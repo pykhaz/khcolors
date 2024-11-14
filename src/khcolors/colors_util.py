@@ -26,6 +26,7 @@ Constants:
 """
 
 from shutil import get_terminal_size
+import sys
 from matplotlib.colors import CSS4_COLORS
 from rich.color import ANSI_COLOR_NAMES
 from rich.console import Console
@@ -36,7 +37,7 @@ try:
     from .lib import COLOR_PALETTE, _get_rgb, _luminosity, byte_rgb
     from .lib import get_contrast_color as get_contrast
     from .lib import get_integer
-    # from .lib import cprintd
+    from .lib import cprintd
 except ImportError:
     from lib import COLOR_PALETTE, _get_rgb, _luminosity, byte_rgb
     from lib import get_contrast_color as get_contrast
@@ -51,6 +52,9 @@ cprint = CN.print
 COLOR_BASE = {'css': CSS4_COLORS, 'rich': ANSI_COLOR_NAMES}
 
 LMN_LT = int(255*0.35)  # luminosity threshold, for fg color
+CL_MAX = 10  # arbitrary chosen number of colors being copied to clipboard
+#            #   without question
+# CL_MAX = 2  # value for dbg.
 
 # markers for colour samples:
 MARKER0 = "\u00a0"
@@ -62,6 +66,27 @@ MARKER1 = "■"
 #     MARKER1 = "⏺"  # \u23fa
 # else:
 #     MARKER1 = "o"
+
+
+def _again(args, msg="") -> None:
+    """ Asking user if he wants to try again
+
+        Args:
+            args (dict): dictionary of arguments for `get_color_name`
+            msg (str): message to print
+
+        Efect:
+            Calls `get_color_name` again.
+    """
+
+    # return input("\nTry again? (y/n): ").lower().startswith("y")
+    ans = input(f"{msg} Try again? (y/n): ").lower()
+    if ans == "y":
+        cprintd(f"Again, args = {args}", location="_again")
+        get_color_name(**args)
+        sys.exit(0)
+    else:
+        sys.exit("Exiting, no colours copied.")
 
 
 def debug():
@@ -166,12 +191,28 @@ def get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
             nr_to_copy = get_integer(prompt, limits=(1, total_colors))
             if nr_to_copy is None:
                 return ""
-            chosen_color = found[nr_to_copy - 1]
+            try:
+                chosen_color = found[nr_to_copy - 1]
+            except TypeError:
+                chosen_color = [found[nr - 1] for nr in nr_to_copy]
+
+            chosen_color = [chosen_color] if isinstance(chosen_color, str) \
+                else chosen_color
+# get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
+#                    palette: list = None) -> str:
+            if len(chosen_color) > CL_MAX:
+                prompt = f"Copy all of {len(chosen_color)} colors? [y/N]: "
+                ans = input(prompt)
+                args = dict(search_for=search_for, kind=kind, rgb=rgb,)
+                actions = {"n": lambda: _again(args, "No colours copied. "),
+                           "y": lambda: None, }
+                actions.get(ans.lower(), actions['n'])()
+
             if not rgb:
-                pyperclip.copy(chosen_color)
+                pyperclip.copy(", ".join(chosen_color))
             else:
-                rgb_tp = _get_rgb(chosen_color)
-                pyperclip.copy(str(rgb_tp))
+                rgb_tp = ", ".join(str(tp) for tp in _get_rgb(chosen_color))
+                pyperclip.copy(rgb_tp)
             print_found(chosen_color, kind=kind, rgb=rgb)
             return chosen_color
         except ValueError:
@@ -231,23 +272,31 @@ def print_color(i, name, color_base="rich", marg=3, total_colors=10) -> None:
     cprint(color_line)
 
 
-def print_found(color: str, kind: str = "rich", rgb: bool = False) -> None:
-    """ Print a line with a message for the found color """
+def print_found(colors: str, kind: str = "rich", rgb: bool = False) -> None:
+    """ Print a found color """
 
-    if kind == "css":
-        color_code = byte_rgb(color)
+    if len(colors) > 1:
+        plural = "s"
+        nl = Text("\n    ", style="")
     else:
-        color_code = color
-    rgb_tp = _get_rgb(color)
-    bg = get_contrast(color)
-    msg = Text("Color ")
-    # extra space, padding for color name, if bg is white:
-    extra_spc = "" if bg == "black" else " "
-    if not rgb:
-        color_name_rgb = f"{extra_spc}{color} {rgb_tp}{extra_spc}"
-    else:
-        color_name_rgb = f"{extra_spc}{rgb_tp} ({color}){extra_spc}"
-    msg.append(color_name_rgb,
-               style=f"bold italic {color_code} on {bg}")
+        plural = ""
+        nl = Text("", style="")
+    msg = Text(f"Color{plural} ")
+    for i, color in enumerate(colors):
+        if kind == "css":
+            color_code = byte_rgb(color)
+        else:
+            color_code = color
+        rgb_tp = _get_rgb(color)
+        bg = get_contrast(color)
+        # extra space, padding for color name, if bg is white:
+        extra_spc = "" if bg == "black" else " "
+        if not rgb:
+            color_name_rgb = f"{extra_spc}{color} {rgb_tp}{extra_spc}"
+        else:
+            color_name_rgb = f"{extra_spc}{rgb_tp} ({color}){extra_spc}"
+        msg.append(nl)
+        msg.append(color_name_rgb,
+                   style=f"bold italic {color_code} on {bg}")
     msg.append(" copied to clipboard.")
     cprint(msg)

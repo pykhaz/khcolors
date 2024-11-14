@@ -2,7 +2,11 @@
 #
 # SPDX-License-Identifier: MIT
 
-__version__ = "0.3.4"
+__version__ = "0.4.4"
+#  - accepting more than one argument (number) for choosing a colour:
+#        if more than number, then string of comma-separated names/tuples
+#        is copied to clipboard
+# __version__ = "0.3.4"
 #  - new function for getting user input: get_integer
 # __version__ = "0.3.3"
 # updated README.md

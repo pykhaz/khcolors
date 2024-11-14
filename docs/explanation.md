@@ -1,7 +1,3 @@
-1. Background and reason.
-
-    - Provide multiple examples and approaches of how to work with it
-
 During data visualization with `matplotlib`, in the form of plots of various
 types, choosing colours is essential. It is obvious that different lines
 or data series look much better in a single plot when they are represented in 
@@ -36,10 +32,10 @@ Possibility of application of the `khcolors` program while working with
 the plotted data series had its own colour. To stress the value of a helping
 utility for choosing colour names, the axes legends and plot labels were
 assigned with different colours. Such an approach resulted in 6 colour names
-(lines `6-11`; when a certain colour value was to be specified, it was done
-through these variable names, obviously, lines `22-24, 27, 28` and `39`).
+(lines `8-14`; when a certain colour value was to be specified, it was done
+through these variable names, obviously, lines `29, 30, 34, 35`. The colours of the axes were set similarly, `34, 35, 41, 42`, and the colour of the annotation, `53`.
 
-```python hl_lines="6-11 22-24 27-28 39" title="cos_sin_x.py" linenums="1"
+```python hl_lines="8-10 12-14 29 30 34 35 41 42 53" title="cos_sin_x.py" linenums="1"
 --8<-- "docs/assets/cos_sin_x.py"
 ```
 
@@ -49,7 +45,7 @@ The script resulted in the following plot:
 <img src="./assets/cos_sin_x.png" alt="cos_sin_x.png" width="600" />
 </figure>
 
-In case of each of the colour variables, the name of the colour can be
+In case of each of the colour variables, the name of the colour could be
 conveniently chosen simply by typing in the terminal:
 
 ```bash

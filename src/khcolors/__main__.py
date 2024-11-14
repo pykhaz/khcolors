@@ -6,16 +6,18 @@ Main module of khcolors package
 
 import argparse
 from rich.console import Console
+# from softdev.debug import cprintd
 
 try:
     from .colors_util import get_color_name
 
     from . import PROJTITLE
+    from . import __version__
 except ImportError:
     from colors_util import get_color_name
 
     from __init__ import PROJTITLE
-
+    from __init__ import __version__
 CN = Console()
 cprint = CN.print
 
@@ -36,7 +38,7 @@ def main():
     epilog = (f"example: {PROJTITLE} red;\n"
               f"{PROJTITLE} sea")
 
-    parser = argparse.ArgumentParser(prog=f"python {PROJTITLE}",
+    parser = argparse.ArgumentParser(prog=f"{PROJTITLE}",
                                      description=desc, epilog=epilog)
 
     parser.add_argument("name", type=str, nargs="?", default="",
@@ -49,6 +51,9 @@ def main():
     parser.add_argument("-r", "--rgb", action="store_true", default=False,
                         help="copying rgb triplet to clipboard "
                         "instead of colour name")
+    parser.add_argument("-v", "--version", action="version",
+                        version=f"%(prog)s version {__version__}",
+                        help="printing the application version")
 
     args = parser.parse_args()
     SHARED['args'] = args

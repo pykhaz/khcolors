@@ -35,10 +35,27 @@ the `matplotlib` palette, simply use the  `-c` | `--css` option, e.g.
 <img src="./assets/khcolors_pale_r.png" alt="khcolors pale -r" width="600" />
 </figure>
 
-To combine both flags for, e.g. golden, it is possible to type
+To combine both flags (i.e. to select `CSS` palette and copying `RGB` tuple),
+for, e.g. golden, it is possible to type
 
 `khcolors golden -cr`:
 
 <figure>
 <img src="./assets/khcolors_golden_cr.png" alt="khcolors golden -cr" width="600" />
 </figure>
+
+## How To Copy More Than One Colour
+
+To copy more than one colour of the presented search result list,
+it is possible to simply type the numbers of chosen colours,
+separated either with spaces or commas. All the colours can be chosen
+with `.` or `*`.
+
+<figure>
+<img src="./assets/khcolors_multiple_colours.png"
+alt="khcolors multiple" width="600" />
+</figure>
+
+(In the example figure above, for case of 3 separate colours and all
+the shades of olive, the result, copied to the clipboard,
+was pasted after `#`.)

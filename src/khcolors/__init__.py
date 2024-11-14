@@ -95,4 +95,6 @@ For `README` file, visit: <a href"https://github.com/heliotech/khcolors">
     https://github.com/heliotech/khcolors</a>
 """
 
+from .__about__ import __version__
+
 PROJTITLE = "khcolors"

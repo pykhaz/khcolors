@@ -2,12 +2,10 @@
 # project: khcolors
 
 """
-<<<<<<< HEAD
 Auxiliary module for khcolors (release package)
-=======
-Auxiliary module for khcolors (development package)
->>>>>>> 9da312d76cd57573c91211f0f5128254f7e4aa6f
 """
+
+from re import split
 
 from matplotlib import colors as mcolors
 from rich.color import Color, ColorParseError
@@ -48,6 +46,9 @@ for pair in zip(COLOR_PALETTE["css"]["base"], COLOR_PALETTE["css"]["bright"]):
 def _get_rgb(color):
     """ Converts color to r, g, b in range [0, 1] """
 
+    if hasattr(color, "__iter__") and not isinstance(color, str):
+        return [_get_rgb(c) for c in color]
+
     try:
         r, g, b = Color.parse(color).get_truecolor()
     except ColorParseError:
@@ -71,7 +72,7 @@ def byte_rgb(color):
     return f"rgb({r:.0f},{g:.0f},{b:.0f})"
 
 
-def cprintd(message, opening="DBG:", location=""):
+def cprintd(message, opening="DBG:", location="", end="\n"):
     """ Print debug message """
 
     dbg_message = Text(f" {opening} ", style="italic bold red on white")
@@ -119,15 +120,29 @@ def get_integer(prompt: str = "Input an integer: ", limits: tuple = None,
             nl (str, optional): Newline character. Defaults to "\n".
     """
 
-    limits = limits or (-float("inf"), float("inf"))
+    def _parse_int(text):
+        """ Parsing an int or ints from a string """
+
+        result = [int(i) for i in split(r"[,\s]+", text.strip()) if i]
+        if len(result) == 1:
+            return result[0]
+        return result
+
+    inf = float("inf")
+    limits = limits or (-1*inf, inf)
     while True:
         try:
             ans = input(f"{prompt}{nl}")
             if ans == "":
                 return
+            elif ans in [".", "*"] and all(abs(lmt) < inf for lmt in limits):
+                return [n for n in range(limits[0], limits[1] + 1)]
 
-            ans = int(ans)
-            if limits[0] <= ans <= limits[1]:
+            ans = _parse_int(ans)
+            in_limits = (limits[0] <= ans <= limits[1])\
+                if not hasattr(ans, "__iter__")\
+                else all(limits[0] <= a <= limits[1] for a in ans)
+            if in_limits:
                 return ans
             else:
                 print("Number should be between "
