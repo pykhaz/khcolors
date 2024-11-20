@@ -4,9 +4,17 @@ from unittest.mock import patch
 import pytest
 from matplotlib.colors import CSS4_COLORS
 from rich.color import ANSI_COLOR_NAMES
+
+# problems with testing:
+from m_utils.printing import cprintd
+from m_utils.misc import foritemin
+# import sys
+# sys.path.append("./src/khcolors/")
+
+# foritemin(sys.path)
+
 from khcolors.colors_util import get_color_name
 
-from m_utils.printing import cprintd
 
 TESTING = "testing"
 CSS = "css"
@@ -117,8 +125,19 @@ def _get_color_pool(name: str, kind: str = "rich") -> list:
     # ("green", CSS, "16", "yellowgreen"),
 ])
 def test_get_color_name_auto(base_name, kind, user_input, color):
+    counter = 0
     with patch("builtins.input", return_value=user_input):
-        cprintd(f"Input data: {base_name = }, {kind = }, {user_input = }, "
-                f"{color = }", location="test_get_color_name_auto")
-        result = get_color_name(base_name, kind)
+        result = get_color_name(base_name, kind)[0]
+        counter += 1
+        assert result == color
+
+
+# testing _get_color_pool
+@pytest.mark.parametrize("base_name, kind, user_input, color", [
+    (base := "white", kind := CSS,
+     _get_color_pool(base, kind=kind), ""),
+])
+def test_get_color_pool_auto(base_name, kind, user_input, color):
+    with patch("builtins.input", return_value=user_input):
+        result = get_color_name(base_name, kind=kind)
         assert result == color

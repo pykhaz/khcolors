@@ -123,6 +123,7 @@ def get_integer(prompt: str = "Input an integer: ", limits: tuple = None,
     def _parse_int(text):
         """ Parsing an int or ints from a string """
 
+        text = str(text)
         result = [int(i) for i in split(r"[,\s]+", text.strip()) if i]
         if len(result) == 1:
             return result[0]

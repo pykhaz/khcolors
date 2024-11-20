@@ -52,9 +52,11 @@ cprint = CN.print
 COLOR_BASE = {'css': CSS4_COLORS, 'rich': ANSI_COLOR_NAMES}
 
 LMN_LT = int(255*0.35)  # luminosity threshold, for fg color
-CL_MAX = 10  # arbitrary chosen number of colors being copied to clipboard
+CL_MAX_CPY = 10  # arbitrary chosen number of colors being copied to clipboard
 #            #   without question
-# CL_MAX = 2  # value for dbg.
+# CL_MAX_CPY = 2  # value for dbg.
+CL_MAX_LST = 35  # arbitrary chosen number of colors being displayed
+#                #   as colour choices
 
 # markers for colour samples:
 MARKER0 = "\u00a0"
@@ -98,49 +100,58 @@ def debug():
     cprint(f"{_luminosity((4.5, 6.7, 8.9)) = :.4f}")
 
 
+# def find_color(colors_base: list, name: str) -> list:
+#     """ Getting a target list of colors including `name`
+
+#         Args:
+#             colors_base (list): the list of colors to search
+#             name (str): the color to search
+
+#         Returns:
+#             list: the list of colors to choose from
+#     """
+
+#     found = [color for color in colors_base if name in color]
+#     if not found:
+#         if name == "name":
+#             msg = Text.assemble(("Looking for color name ", ""),
+#                                 (f"{name}", "bold italic"),
+#                                 (" -- ", ""),
+#                                 ("seriously?", "bold italic red"))
+#             cprint(msg)
+#             return []
+#         if name not in ["base", "base-bright"]:
+#             cprint(Text.assemble(("No color found for '", ""),
+#                                  (f"{name}", "bold"),
+#                                  ("', exiting.", "")))
+#         return []
+
+#     cprintd(f"{found = } of type {type(found)}, len = {len(found)}",
+#             location="find_color")
+
+#     return found
+
+
 def get_color_choices(name: str = "", kind: str = "rich",
                       palette: list = None) -> list:
-    """ Getting the palette to search
+    """ Getting possible colour choices
 
         Args:
+            name (str): the color to search for
             kind (str): the palette to search the color, 'rich' or 'css'
+            palette (list): optionally a specific palette to search through
 
         Returns:
             list: the list of colors to search
     """
 
-    palette = palette or COLOR_BASE[kind]
+    result = [color for color in (palette or COLOR_BASE[kind])
+              if name in color]
 
-    return [color for color in palette if name in color]
+    # cprintd(f"{result = } of type {type(result)}, len = {len(result)}",
+    #         location="get_color_choices")
 
-
-def find_color(colors_base: list, name: str) -> list:
-    """ Getting a target list of colors including `name`
-
-        Args:
-            colors_base (list): the list of colors to search
-            name (str): the color to search
-
-        Returns:
-            list: the list of colors to choose from
-    """
-
-    found = [color for color in colors_base if name in color]
-    if not found:
-        if name == "name":
-            msg = Text.assemble(("Looking for color name ", ""),
-                                (f"{name}", "bold italic"),
-                                (" -- ", ""),
-                                ("seriously?", "bold italic red"))
-            cprint(msg)
-            return []
-        if name not in ["base", "base-bright"]:
-            cprint(Text.assemble(("No color found for '", ""),
-                                 (f"{name}", "bold"),
-                                 ("', exiting.", "")))
-        return []
-
-    return found
+    return result
 
 
 def get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
@@ -156,7 +167,7 @@ def get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
         Args:
             search_for (str): name (or part of the name) of the colour
                               to look for.
-            kind (str): the palette to search the color, 'rich' or 'css'
+            kind (str): the palette to search the colour, 'rich' or 'css'
             rgb (bool): if True, the color rgb triplet is copied
                         to clipboard
 
@@ -165,22 +176,27 @@ def get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
             copying a chosen name to clipboard.
     """
 
+    # when there is a palette name, instead of a colour:
     if search_for in ["base", "base-bright"]:
         get_palette(search_for, kind, rgb=rgb)
+
     colors_base = get_color_choices(search_for, kind=kind, palette=palette)
     total_colors = len(colors_base)
-    if total_colors > 35:
+    if total_colors > CL_MAX_LST:
         ans = input(f"Display all of {total_colors} colors? [y/N]: ")
         if ans.lower() != "y":
             cprint("Exiting.", style="bold")
             return ""
 
-    found = find_color(colors_base, search_for)
-    if not found:
-        return ""
+    # cprintd("Calling `find_color`", location="get_color_name")
+    # RFC: replacing `found` with `colors_base`…
+    # found = find_color(colors_base, search_for)
+    # if not found:
+    #     return ""
     cprint(" Choose colour (number):", style="bold")
-    marg = len(str(len(found)))
-    for i, color in enumerate(found):
+    # marg = len(str(len(found)))
+    marg = len(str(len(colors_base)))
+    for i, color in enumerate(colors_base):
         print_color(i, color, color_base=kind, marg=marg,
                     total_colors=total_colors)
 
@@ -192,15 +208,14 @@ def get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
             if nr_to_copy is None:
                 return ""
             try:
-                chosen_color = found[nr_to_copy - 1]
+                chosen_color = colors_base[nr_to_copy - 1]
             except TypeError:
-                chosen_color = [found[nr - 1] for nr in nr_to_copy]
+                chosen_color = [colors_base[nr - 1] for nr in nr_to_copy]
 
             chosen_color = [chosen_color] if isinstance(chosen_color, str) \
                 else chosen_color
-# get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
-#                    palette: list = None) -> str:
-            if len(chosen_color) > CL_MAX:
+
+            if len(chosen_color) > CL_MAX_CPY:
                 prompt = f"Copy all of {len(chosen_color)} colors? [y/N]: "
                 ans = input(prompt)
                 args = dict(search_for=search_for, kind=kind, rgb=rgb,)
@@ -289,7 +304,7 @@ def print_found(colors: str, kind: str = "rich", rgb: bool = False) -> None:
             color_code = color
         rgb_tp = _get_rgb(color)
         bg = get_contrast(color)
-        # extra space, padding for color name, if bg is white:
+        # extra space, padding for colour name, if bg is white:
         extra_spc = "" if bg == "black" else " "
         if not rgb:
             color_name_rgb = f"{extra_spc}{color} {rgb_tp}{extra_spc}"

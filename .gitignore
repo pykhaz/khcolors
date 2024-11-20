@@ -9,11 +9,13 @@ venv/
 .idea/
 .vscode/
 .repo_data
+objects.inv
 
 # Ignorowanie plików tymczasowych
 .bak/
 __pycache__/
 tmp/
+tmp_*
 *.swp
 *.tmp
 README.html
