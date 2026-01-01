@@ -2,7 +2,11 @@
 #
 # SPDX-License-Identifier: MIT
 
-__version__ = "0.4.4"
+__version__ = "0.5.4"
+# adding possibility of changing the colour name after printing found colours
+# (when "0" is chosen; the question is asked for new colour name to look for
+# - and `-c`, `-r` options)
+# __version__ = "0.4.4"
 #  - accepting more than one argument (number) for choosing a colour:
 #        if more than number, then string of comma-separated names/tuples
 #        is copied to clipboard

@@ -51,6 +51,11 @@ cprint = CN.print
 
 COLOR_BASE = {'css': CSS4_COLORS, 'rich': ANSI_COLOR_NAMES}
 
+# minimal set of words for finding all the colors:
+# rich --
+RICH_MINIMAL = ['red', 'blue', 'yellow', 'green', 'light', 'dark', 'pale']
+
+
 LMN_LT = int(255*0.35)  # luminosity threshold, for fg color
 CL_MAX_CPY = 10  # arbitrary chosen number of colors being copied to clipboard
 #            #   without question
@@ -155,7 +160,7 @@ def get_color_choices(name: str = "", kind: str = "rich",
 
 
 def get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
-                   palette: list = None) -> str:
+                   palette: list = None, interactive: bool = True) -> str:
     """ Getting the colour name from rich or CSS4 palettes
 
         Function returning the name of the colour, chosen by the user, from
@@ -170,12 +175,14 @@ def get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
             kind (str): the palette to search the colour, 'rich' or 'css'
             rgb (bool): if True, the color rgb triplet is copied
                         to clipboard
+            interactive (bool): True, if the application is used iteractively
 
         Returns:
             None: the application prints a list of colours found and allows
             copying a chosen name to clipboard.
     """
 
+    # cprintd("…entering the function…", location="get_color_name")
     # when there is a palette name, instead of a colour:
     if search_for in ["base", "base-bright"]:
         get_palette(search_for, kind, rgb=rgb)
@@ -204,7 +211,25 @@ def get_color_name(search_for: str, kind: str = "rich", rgb: bool = False,
               "<Enter> to exit): ")
     while True:
         try:
-            nr_to_copy = get_integer(prompt, limits=(1, total_colors))
+            nr_to_copy = get_integer(prompt, limits=(-1, total_colors))
+            # cprintd(f"{nr_to_copy = }")
+            if nr_to_copy is not None and nr_to_copy < 1:
+                # cprintd("search RESET clause")
+                new_search_prompt = "Look for colour name: "
+                ans = input(new_search_prompt)
+                try:
+                    search_for, kind = ans.split(" ")
+                except ValueError:
+                    search_for = ans
+                    kind = "-r"
+                kinds = {"-c": "css", "-r": "rich"}
+                try:
+                    kind_param = kinds[kind]
+                except KeyError:
+                    print("Defaulting to rich palette.")
+                    kind_param = "rich"
+                chosen_color = get_color_name(search_for, kind_param)
+                return chosen_color
             if nr_to_copy is None:
                 return ""
             try:

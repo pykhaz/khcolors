@@ -6,7 +6,7 @@ Main module of khcolors package
 
 import argparse
 from rich.console import Console
-# from softdev.debug import cprintd
+from softdev.debug import cprintd
 
 try:
     from .colors_util import get_color_name
@@ -18,6 +18,8 @@ except ImportError:
 
     from __init__ import PROJTITLE
     from __init__ import __version__
+
+FTITLE = __file__.split("/", maxsplit=-1)[-1].split(".", maxsplit=-1)[0]
 CN = Console()
 cprint = CN.print
 
@@ -68,6 +70,7 @@ def run():
     kind = "rich" if not args.css else "css"
     copy_rgb = args.rgb
 
+    cprintd("main.run()", location=FTITLE)
     get_color_name(name, kind, rgb=copy_rgb)
 
 
